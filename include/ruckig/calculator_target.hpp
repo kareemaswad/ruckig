@@ -493,6 +493,7 @@ public:
                 case ControlInterface::Position: {
                     if (!std::isinf(inp.max_jerk[dof])) {
                         PositionThirdOrderStep2 step2 {t_profile, p.p[0], p.v[0], p.a[0], p.pf, p.vf, p.af, inp.max_velocity[dof], inp_min_velocity[dof], inp.max_acceleration[dof], inp_min_acceleration[dof], inp.max_jerk[dof]};
+                        step2.minimize_jerk = inp.minimize_jerk;
                         found_time_synchronization = step2.get_profile(p);
                     } else if (!std::isinf(inp.max_acceleration[dof])) {
                         PositionSecondOrderStep2 step2 {t_profile, p.p[0], p.v[0], p.pf, p.vf, inp.max_velocity[dof], inp_min_velocity[dof], inp.max_acceleration[dof], inp_min_acceleration[dof]};

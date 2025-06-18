@@ -104,6 +104,9 @@ public:
     //! Is the DoF considered for calculation?
     Vector<bool> enabled;
 
+    //! Minimize jerk
+    bool minimize_jerk {true};
+
     //! Per-DoF control_interface (overwrites global control_interface)
     std::optional<Vector<ControlInterface>> per_dof_control_interface;
 
